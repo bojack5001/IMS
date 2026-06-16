@@ -14,15 +14,18 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function AppLayout() {
-  const { user } = useAuthStore();
+  const { user, setUser, setSession } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await authService.logout();
-      navigate('/login');
     } catch (error) {
       console.error('Logout failed', error);
+    } finally {
+      setUser(null);
+      setSession(null);
+      navigate('/login');
     }
   };
 

@@ -43,6 +43,9 @@ export const authService = {
   },
 
   async logout() {
+    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('abcdefghij')) {
+      return; // Bypass in demo mode
+    }
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
   },
