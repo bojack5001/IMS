@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package, TrendingDown, Users, DollarSign } from 'lucide-react';
+import { Package, TrendingDown, Users, IndianRupee } from 'lucide-react';
 import {
   BarChart,
   Bar,
@@ -75,10 +75,10 @@ export default function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Inventory Value</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <IndianRupee className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$45,231.89</div>
+            <div className="text-2xl font-bold">₹45,231.89</div>
             <p className="text-xs text-muted-foreground">+4% from last month</p>
           </CardContent>
         </Card>
@@ -106,7 +106,7 @@ export default function DashboardPage() {
                     fontSize={12} 
                     tickLine={false} 
                     axisLine={false} 
-                    tickFormatter={(value) => `$${value}`} 
+                    tickFormatter={(value) => `₹${value}`} 
                   />
                   <Tooltip />
                   <Line 

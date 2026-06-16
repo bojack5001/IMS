@@ -127,7 +127,7 @@ export default function ProductListPage() {
                   <TableCell>{product.name}</TableCell>
                   <TableCell>{getCategoryName(product.category_id)}</TableCell>
                   <TableCell>{getSupplierName(product.supplier_id)}</TableCell>
-                  <TableCell className="text-right">${product.selling_price.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">₹{product.selling_price.toFixed(2)}</TableCell>
                   <TableCell className="text-right">
                     <span className={product.stock_quantity <= product.minimum_stock ? 'text-destructive font-bold' : ''}>
                       {product.stock_quantity}

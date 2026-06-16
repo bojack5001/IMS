@@ -268,7 +268,7 @@ export default function ProductFormModal({
                 name="purchase_price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Purchase Price ($)</FormLabel>
+                    <FormLabel>Purchase Price (₹)</FormLabel>
                     <FormControl>
                       <Input type="number" step="0.01" {...field} />
                     </FormControl>
@@ -281,7 +281,7 @@ export default function ProductFormModal({
                 name="selling_price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Selling Price ($)</FormLabel>
+                    <FormLabel>Selling Price (₹)</FormLabel>
                     <FormControl>
                       <Input type="number" step="0.01" {...field} />
                     </FormControl>

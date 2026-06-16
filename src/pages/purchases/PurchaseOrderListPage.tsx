@@ -66,7 +66,7 @@ export default function PurchaseOrderListPage() {
                   <TableCell className="font-medium">{po.po_number}</TableCell>
                   <TableCell>{po.supplier?.company_name || 'Unknown'}</TableCell>
                   <TableCell>{format(new Date(po.created_at), 'MMM dd, yyyy')}</TableCell>
-                  <TableCell>${po.total_amount.toFixed(2)}</TableCell>
+                  <TableCell>₹{po.total_amount.toFixed(2)}</TableCell>
                   <TableCell>
                     <Badge variant={
                       po.status === 'received' ? 'default' : 
