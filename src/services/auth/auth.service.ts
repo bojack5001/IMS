@@ -5,15 +5,19 @@ export const authService = {
   async login({ email, password }: LoginCredentials) {
     // Demo mode: Bypass real auth if using the dummy Supabase URL or if env vars are missing
     if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('abcdefghij')) {
-      return {
-        user: {
-          id: 'demo-user-id',
-          email,
-        },
-        session: {
-          access_token: 'demo-token',
-        }
-      };
+      if (email === 'admin@ims' && password === 'admin@123') {
+        return {
+          user: {
+            id: 'demo-user-id',
+            email,
+          },
+          session: {
+            access_token: 'demo-token',
+          }
+        };
+      } else {
+        throw new Error('Invalid User ID or password. Please use admin@ims / admin@123');
+      }
     }
 
     const { data, error } = await supabase.auth.signInWithPassword({

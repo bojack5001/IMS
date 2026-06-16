@@ -73,11 +73,11 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">User ID</Label>
             <Input
               id="email"
-              type="email"
-              placeholder="m@example.com"
+              type="text"
+              placeholder="admin@ims"
               {...register('email')}
               disabled={isLoading}
             />
