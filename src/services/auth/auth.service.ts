@@ -43,7 +43,7 @@ export const authService = {
     if (error) throw error;
   },
 
-  async getCurrentSession() {
+  async getCurrentSession(): Promise<any> {
     if (import.meta.env.VITE_SUPABASE_URL?.includes('abcdefghij')) {
       return { access_token: 'demo-token', user: { id: 'demo-user-id', email: 'admin@demo.com' } };
     }
