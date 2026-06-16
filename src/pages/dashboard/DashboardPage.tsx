@@ -12,13 +12,15 @@ import {
   Line
 } from 'recharts';
 
+const INR = '\u20B9';
+
 const mockSalesData = [
-  { name: 'Jan', total: 1200 },
-  { name: 'Feb', total: 2100 },
-  { name: 'Mar', total: 1800 },
-  { name: 'Apr', total: 2400 },
-  { name: 'May', total: 2800 },
-  { name: 'Jun', total: 3200 },
+  { name: 'Jan', total: 120000 },
+  { name: 'Feb', total: 210000 },
+  { name: 'Mar', total: 180000 },
+  { name: 'Apr', total: 240000 },
+  { name: 'May', total: 280000 },
+  { name: 'Jun', total: 320000 },
 ];
 
 const mockStockData = [
@@ -78,7 +80,7 @@ export default function DashboardPage() {
             <IndianRupee className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">₹45,231.89</div>
+            <div className="text-2xl font-bold">{INR}45,23,189</div>
             <p className="text-xs text-muted-foreground">+4% from last month</p>
           </CardContent>
         </Card>
@@ -106,9 +108,9 @@ export default function DashboardPage() {
                     fontSize={12} 
                     tickLine={false} 
                     axisLine={false} 
-                    tickFormatter={(value) => `₹${value}`} 
+                    tickFormatter={(value) => `${INR}${(value/1000).toFixed(0)}k`} 
                   />
-                  <Tooltip />
+                  <Tooltip formatter={(value: any) => [`${INR}${value.toLocaleString('en-IN')}`, 'Sales']} />
                   <Line 
                     type="monotone" 
                     dataKey="total" 

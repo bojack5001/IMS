@@ -13,6 +13,8 @@ import { Plus } from 'lucide-react';
 import { format } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
 
+const INR = '\u20B9';
+
 export default function PurchaseOrderListPage() {
   const { data: pos, isLoading } = useQuery({
     queryKey: ['purchases'],
@@ -66,7 +68,7 @@ export default function PurchaseOrderListPage() {
                   <TableCell className="font-medium">{po.po_number}</TableCell>
                   <TableCell>{po.supplier?.company_name || 'Unknown'}</TableCell>
                   <TableCell>{format(new Date(po.created_at), 'MMM dd, yyyy')}</TableCell>
-                  <TableCell>₹{po.total_amount.toFixed(2)}</TableCell>
+                  <TableCell>{INR}{po.total_amount.toFixed(2)}</TableCell>
                   <TableCell>
                     <Badge variant={
                       po.status === 'received' ? 'default' : 
