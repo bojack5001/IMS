@@ -36,7 +36,7 @@ export function useAuth() {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (_event, currentSession) => {
-        if (import.meta.env.VITE_SUPABASE_URL?.includes('abcdefghij')) {
+        if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('abcdefghij')) {
           return; // Ignore real auth state changes in demo mode
         }
         setSession(currentSession);

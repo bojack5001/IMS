@@ -3,8 +3,8 @@ import type { LoginCredentials, RegisterCredentials } from '@/types/auth.types';
 
 export const authService = {
   async login({ email, password }: LoginCredentials) {
-    // Demo mode: Bypass real auth if using the dummy Supabase URL
-    if (import.meta.env.VITE_SUPABASE_URL?.includes('abcdefghij')) {
+    // Demo mode: Bypass real auth if using the dummy Supabase URL or if env vars are missing
+    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('abcdefghij')) {
       return {
         user: {
           id: 'demo-user-id',
@@ -44,7 +44,7 @@ export const authService = {
   },
 
   async getCurrentSession(): Promise<any> {
-    if (import.meta.env.VITE_SUPABASE_URL?.includes('abcdefghij')) {
+    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('abcdefghij')) {
       return { access_token: 'demo-token', user: { id: 'demo-user-id', email: 'admin@demo.com' } };
     }
     const { data: { session }, error } = await supabase.auth.getSession();
@@ -53,7 +53,7 @@ export const authService = {
   },
 
   async getProfile(userId: string) {
-    if (import.meta.env.VITE_SUPABASE_URL?.includes('abcdefghij')) {
+    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('abcdefghij')) {
       return { id: userId, email: 'admin@demo.com', full_name: 'Admin Demo', role: 'admin' };
     }
     const { data, error } = await supabase
